@@ -1,0 +1,138 @@
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin-bottom: 60px;
+  background: linear-gradient(45deg, #bafeba, #3c8b3c);
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #3c8b3c;
+}
+
+.btn-group-top,
+.btn-group-btm {
+  position: relative;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  color: white;
+}
+
+.btn {
+  background-color: #3c8b3c;
+
+  &:hover {
+    background-color: #003000;
+  }
+}
+
+.btn,
+.btn-default {
+  color: white;
+
+  &:hover {
+    color: white;
+    background-color: #003000;
+  }
+}
+
+#loginbutton {
+  align-items: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.211);
+  color: #002105;
+}
+
+th {
+  text-align: left;
+}
+
+thead {
+  th {
+
+    background-color: #558f60;
+  }
+}
+
+.scrollable {
+  display: block;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+tbody {
+  tr {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  td {
+    position: relative;
+
+    &:hover {
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: -9999px;
+        bottom: -9999px;
+        background-color: rgba(255, 255, 255, 0.2);
+        z-index: -1;
+      }
+    }
+  }
+}
+
+.LogoImg {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px;
+  width: 125px;
+  height: 110px;
+}
+
+.img-thumbnail {
+  border-radius: 15%;
+  width: 150px;
+  height: 130px;
+}
+
+.plantimg-display {
+  border-radius: 15%;
+  padding: 5px;
+  width: 280px;
+  height: 210px;
+}

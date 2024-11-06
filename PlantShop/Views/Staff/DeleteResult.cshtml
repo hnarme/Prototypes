@@ -1,0 +1,21 @@
+@model Staff;
+
+@{
+    ViewData["Title"] = "Deleted Staff";
+}
+
+<h2>Staff deleted successfully!</h2>
+
+<div>
+    <hr />
+    <dl class="container">
+        <div class="col-md-3 agile_grid_right">
+            <p class="fexi_header"><span>You have deleted staff from the system.</span></p>
+        </div>
+    </dl>
+</div>
+
+<hr />
+<div>
+    <a asp-controller="Staff" asp-action="Index" class="btn btn-primary">Back</a>
+</div>

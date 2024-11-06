@@ -1,0 +1,436 @@
+-- @block
+CREATE TABLE plantshop.plant(
+    plant_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    family VARCHAR(50) NOT NULL
+);
+/*
+ separator
+ */
+-- @block
+ALTER TABLE plantshop.plant
+    RENAME COLUMN type to family;
+/*
+ separator
+ */
+-- @block
+ALTER TABLE plantshop.plant DROP COLUMN email;
+/*
+ separator
+ */
+-- @block
+INSERT INTO plantshop.plant (name, family, indooroutdoor)
+VALUES (
+        'Cardinal flower',
+        'Campanulaceae',
+        'indoor',
+        'https://www.thespruce.com/thmb/GKQE4kcHuKpK1NV5ONBdm9vTZjo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/growing-cardinal-flowers-5093922-02-8a7175a31ace4215906de2a91a3f6dfe.jpg'
+    ),
+    (
+        'Algerian Ivy',
+        'Araliaceae',
+        'indoor',
+        'https://mygardenlife.com/wp-content/uploads/2022/12/6362_37-1.jpg'
+    ),
+    (
+        'American Elderberry',
+        'Adoxaceae',
+        'indoor',
+        'https://www.fs.usda.gov/wildflowers/plant-of-the-week/images/americanblackelderberry/black_elderberry2_full.JPG'
+    ),
+    (
+        'Angelonia',
+        'Plantaginaceae',
+        'indoor',
+        'https://www.gardendesign.com/pictures/images/900x705Max/site_3/serena-purple-angelonia-angelonia-angustifolia-shutterstock-com_15441.jpg'
+    ),
+    (
+        'Blackberry Lily',
+        'Iridaceae',
+        'outdoor',
+        'https://www.gardenia.net/wp-content/uploads/2023/04/9bvWGae4hlK0zOkemWmrSxH7CGmHgvaYpE8RlK3p-747x533.webp'
+    ),
+    (
+        'Bellflowers',
+        'Campanulaceae',
+        'outdoor',
+        'https://cdn.pixabay.com/photo/2020/05/27/13/00/bellflowers-5227156_960_720.jpg'
+    ),
+    (
+        'Lace aloe',
+        'Asphodelaceae',
+        'outdoor',
+        'https://www.thespruce.com/thmb/PzDZv1TdJoATFsvnoGEwE7N9neQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SPR-lace-aloe-7377345-03-2073d608804d4309ba516f8131f316f6.jpg'
+    ),
+    (
+        'Lily',
+        'Liliaceae',
+        'outdoor',
+        'https://www.brooksidenursery.co.uk/media/catalog/product/cache/1365fd90104fe9bc02276aadbee322bf/t/u/tumbnail_b47dbe08-5dd8-4832-94b4-e47b3cacf047.jpg'
+    );
+/*
+ separator
+ */
+-- @block
+SELECT *
+FROM plantshop.plant;
+/*
+ separator
+ */
+-- @block
+DROP Table plantshop.plant;
+/*
+ separator
+ */
+-- @block
+ALTER TABLE plantshop.plant
+ADD indooroutdoor VARCHAR(8) NOT NULL;
+/*
+ separator
+ */
+-- @block
+UPDATE plantshop.plant
+SET indooroutdoor = 'indoor'
+WHERE plant_id BETWEEN 1 AND 4;
+/*
+ separator
+ */
+-- @block
+UPDATE plantshop.plant
+SET indooroutdoor = 'outdoor'
+WHERE plant_id BETWEEN 5 AND 8;
+/*
+ separator
+ */
+-- @block
+SELECT *
+FROM plantshop.plant
+WHERE indooroutdoor = 'indoor';
+-- Add plant image column to the table plant
+-- @block
+ALTER TABLE plantshop.plant
+ADD plant_image VARCHAR(255);
+-- set image links
+-- @block
+UPDATE plantshop.plant
+SET plant_image = 'https://www.thespruce.com/thmb/GKQE4kcHuKpK1NV5ONBdm9vTZjo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/growing-cardinal-flowers-5093922-02-8a7175a31ace4215906de2a91a3f6dfe.jpg'
+WHERE plant_id = 1;
+-- @block
+UPDATE plantshop.plant
+SET plant_image = 'https://mygardenlife.com/wp-content/uploads/2022/12/6362_37-1.jpg'
+WHERE plant_id = 2;
+-- @block
+UPDATE plantshop.plant
+SET plant_image = 'https://www.fs.usda.gov/wildflowers/plant-of-the-week/images/americanblackelderberry/black_elderberry2_full.JPG'
+WHERE plant_id = 3;
+-- @block
+UPDATE plantshop.plant
+SET plant_image = 'https://www.gardendesign.com/pictures/images/900x705Max/site_3/serena-purple-angelonia-angelonia-angustifolia-shutterstock-com_15441.jpg'
+WHERE plant_id = 4;
+-- @block
+UPDATE plantshop.plant
+SET plant_image = 'https://www.gardenia.net/wp-content/uploads/2023/04/9bvWGae4hlK0zOkemWmrSxH7CGmHgvaYpE8RlK3p-747x533.webp'
+WHERE plant_id = 5;
+-- @block
+UPDATE plantshop.plant
+SET plant_image = 'https://cdn.pixabay.com/photo/2020/05/27/13/00/bellflowers-5227156_960_720.jpg'
+WHERE plant_id = 6;
+-- @block
+UPDATE plantshop.plant
+SET plant_image = 'https://www.thespruce.com/thmb/PzDZv1TdJoATFsvnoGEwE7N9neQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SPR-lace-aloe-7377345-03-2073d608804d4309ba516f8131f316f6.jpg'
+WHERE plant_id = 7;
+-- @block
+UPDATE plantshop.plant
+SET plant_image = 'https://www.brooksidenursery.co.uk/media/catalog/product/cache/1365fd90104fe9bc02276aadbee322bf/t/u/tumbnail_b47dbe08-5dd8-4832-94b4-e47b3cacf047.jpg'
+WHERE plant_id = 8;
+/*
+ COMMANDS for plant shop database staff Table
+ */
+-- @block
+CREATE TABLE plantshop.staff(
+    staff_id INT PRIMARY KEY AUTO_INCREMENT,
+    forename VARCHAR(255) NOT NULL,
+    surname VARCHAR(255) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    role varchar(10)
+);
+/*
+ separator
+ */
+-- @block
+INSERT INTO plantshop.staff (forename, surname, email, password, role)
+VALUES (
+        'Cliff',
+        'Boothman',
+        'cliffboothman@greenplant.com',
+        'password',
+        'manager'
+    ),
+    (
+        'Constantin',
+        'Chevalier',
+        'constchevalier@greenplant.com',
+        'password',
+        'standard'
+    ),
+    (
+        'Sascha',
+        'Ritter',
+        'sascharitter@greenplant.com',
+        'password',
+        'standard'
+    ),
+    (
+        'Leonidas',
+        'Xanthopoulos',
+        'leonidasxantho@greenplant.com',
+        'password',
+        'standard'
+    ),
+    (
+        'Javon',
+        'Davis',
+        'javondavis@greenplant.com',
+        'password',
+        'standard'
+    ),
+    (
+        'Nevan',
+        'Higgins',
+        'nevanhiggins@greenplant.com',
+        'password',
+        'standard'
+    ),
+    (
+        'Asami',
+        'Sugimoto',
+        'asamisugi@greenplant.com',
+        'password',
+        'standard'
+    ),
+    (
+        'Sung-Hyun',
+        'Yoon',
+        'sunghyunyoon@greenplant.com',
+        'password',
+        'standard'
+    ),
+    (
+        'Neusa',
+        'Costa',
+        'neusacosta@greenplant.com',
+        'password',
+        'standard'
+    ),
+    (
+        'Kulap',
+        'Wattana',
+        'kulapwattana@greenplant.com',
+        'password',
+        'standard'
+    ),
+    (
+        'Rosy',
+        'Joseph',
+        'rosyjoseph@greenplant.com',
+        'thisisabadpassword',
+        'standard'
+    ),
+    (
+        'Hope',
+        'Powell',
+        'hopepowell@greenplant.com',
+        'password',
+        'manager'
+    );
+/*
+ separator
+ */
+/*
+ -- @block
+ INSERT INTO plantshop.staff (forename, surname, email, password)
+ VALUES (
+ 'Cliff',
+ 'Boothman',
+ '1997-5-31',
+ 'cliffboothman@greenplant.com',
+ 'password'
+ ),
+ (
+ 'Constantin',
+ 'Chevalier',
+ '1996-12-20',
+ 'constchevalier@greenplant.com',
+ 'password'
+ ),
+ (
+ 'Sascha',
+ 'Ritter',
+ '1995-9-5',
+ 'sascharitter@greenplant.com',
+ 'password'
+ ),
+ (
+ 'Leonidas',
+ 'Xanthopoulos',
+ '1994-6-18',
+ 'leonidasxantho@greenplant.com',
+ 'password'
+ ),
+ (
+ 'Javon',
+ 'Davis',
+ '1993-1-24',
+ 'javondavis@greenplant.com',
+ 'password'
+ ),
+ (
+ 'Nevan',
+ 'Higgins',
+ '1992-12-12',
+ 'nevanhiggins@greenplant.com',
+ 'password'
+ ),
+ (
+ 'Asami',
+ 'Sugimoto',
+ '1998-3-17',
+ 'asamisugi@greenplant.com',
+ 'password'
+ ),
+ (
+ 'Sung-Hyun',
+ 'Yoon',
+ '1999-10-28',
+ 'sunghyunyoon@greenplant.com',
+ 'password'
+ ),
+ (
+ 'Neusa',
+ 'Costa',
+ '2000-7-5',
+ 'neusacosta@greenplant.com',
+ 'password'
+ ),
+ (
+ 'Kulap',
+ 'Wattana',
+ '2001-4-8',
+ 'kulapwattana@greenplant.com',
+ 'password'
+ ),
+ (
+ 'Rosy',
+ 'Joseph',
+ '2002-8-27',
+ 'rosyjoseph@greenplant.com',
+ 'password'
+ ), 
+ (
+ 'Hope',
+ 'Powell',
+ '1997-8-27',
+ 'hopepowell@greenplant.com',
+ 'password'
+ );
+ */
+/*
+ separator
+ */
+-- @block
+SELECT *
+FROM plantshop.staff;
+/*
+ separator
+ */
+-- @block
+ALTER TABLE plantshop.staff
+VALUES (
+        'fname',
+        'sname',
+        '2000-4-21',
+        'cliffboothman@greenplant.com'
+    );
+/*
+ separator
+ */
+-- @block
+INSERT INTO staff (forename, surname, email, password)
+VALUES ('@forename', '@surname', '@email', '@password');
+-- @block
+INSERT INTO plantshop.staff (forename, surname, email, password)
+VALUES (
+        'Test',
+        'Test',
+        'yourname@greenplant.com',
+        'password'
+    );
+/*
+ separator
+ */
+-- @block
+DELETE FROM plantshop.staff
+WHERE surname = 'Name';
+/*
+ separator
+ */
+-- @block
+ALTER TABLE plantshop.staff
+ADD password VARCHAR(50) NOT NULL;
+/*
+ separator
+ */
+-- @block
+ALTER TABLE plantshop.staff
+VALUES (
+        'fname',
+        'sname',
+        '2000-4-21',
+        'cliffboothman@greenplant.com'
+    );
+/*
+ separator
+ */
+-- @block
+UPDATE plantshop.staff
+SET password = 'password';
+/*
+ separator
+ */
+-- @block
+UPDATE plantshop.staff
+SET forename = 'Test',
+    surname = 'Test',
+    dateOfBirth = '1997-5-31',
+    email = 'cliffboothman@greenplant.com'
+WHERE staff_id = 1;
+/*
+ separator
+ */
+-- @block
+ALTER TABLE plantshop.staff DROP COLUMN dateOfBirth;
+/*
+ separator
+ */
+-- @block
+DROP Table plantshop.staff;
+/*
+ separator
+ */
+-- @block
+ALTER TABLE plantshop.staff
+ADD role varchar(10);
+-- @block
+UPDATE plantshop.staff
+SET role = 'standard';
+/*
+ separator
+ */
+-- @block
+UPDATE plantshop.staff
+SET role = 'manager'
+WHERE forename = 'Cliff';
+/*
+ separator
+ */

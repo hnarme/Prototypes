@@ -1,0 +1,81 @@
+@model List<Plant>;
+<!-- Title for this view -->
+@{
+    ViewData["Title"] = "Indoor Plant List";
+}
+<h1>Plant List</h1>
+<hr />
+
+<!-- Add new plants button -->
+<div class="btn-group-top">
+    <a asp-controller="Plant" asp-action="Create" class="btn btn-primary float-end">
+        Add New Plants
+    </a>
+</div>
+
+<!-- Database list table -->
+<div class="page-container">
+    <div class="table-responsive">
+        <div class="scrollable">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Plant Id</th>
+                        <th>Name</th>
+                        <th>Family</th>
+                        <th>Indoor or Outdoor</th>
+                        <th>Plant Image</th>
+                        <th style="width: 1px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Plant plants in Model)
+                    {
+                        <tr>
+                            <td>
+                                @plants.Plant_Id
+                            </td>
+                            <td>
+                                @plants.Name
+                            </td>
+                            <td>
+                                @plants.Family
+                            </td>
+                            <td>
+                                @plants.IndoorOutdoor
+                            </td>
+                            <td>
+                                @plants.Plant_Image
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false" id="btnToggleActions">
+                                        More Options
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnToggleActions">
+                                        <li><a asp-controller="Plant" asp-action="Display" asp-route-id="@plants.Plant_Id"
+                                                class="dropdown-item">Display</a></li>
+                                        <li><a asp-controller="Plant" asp-action="Edit" asp-route-id="@plants.Plant_Id"
+                                                class="dropdown-item">Edit</a></li>
+                                        <li><a asp-controller="Plant" asp-action="Delete" asp-route-id="@plants.Plant_Id"
+                                                class="dropdown-item">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Links for other options -->
+<div class="btn-group-btm">
+    <div class="btn-group" role="group">
+        <a asp-controller="Plant" asp-action="Index" class="btn btn-default">Show All</a>
+        <a asp-controller="Plant" asp-action="IndoorOnly" class="btn btn-default">Indoor Only</a>
+        <a asp-controller="Plant" asp-action="OutdoorOnly" class="btn btn-default">Outdoor Only</a>
+    </div>
+</div>

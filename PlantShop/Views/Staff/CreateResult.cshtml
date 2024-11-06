@@ -1,0 +1,24 @@
+@model Staff;
+<!-- Title for this view -->
+@{
+    ViewData["Title"] = "Staff Page";
+}
+<!-- View heading -->
+<h2>You have registered @Model.Forename @Model.Surname's details onto the system</h2>
+<hr />
+<!-- Results from add form input -->
+<div>
+    <dl class="container">
+        <div class="col-md-3 agile_grid_right">
+            <p class="fexi_header"><span>Name: </span>@Model.Forename @Model.Surname</p>
+            <p class="fexi_header_para"><span>@Html.DisplayNameFor(Model => Model.Email): </span> @Model.Email </p>
+            <p class="fexi_header_para"><span>Password: </span> @Model.Password </p>
+            <p class="fexi_header_para"><span>Role: </span> @Model.Role </p>
+        </div>
+    </dl>
+</div>
+<!-- Back button to index view -->
+<hr />
+<div>
+    <a asp-controller="Staff" asp-action="Index" class="btn btn-primary">Back</a>
+</div>

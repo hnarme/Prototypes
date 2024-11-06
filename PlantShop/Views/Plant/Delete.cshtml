@@ -1,0 +1,61 @@
+@model Plant;
+<!-- Title for view -->
+@{
+    ViewData["Title"] = "Delete Plant";
+}
+<!-- Heading for this view -->
+<h2>Remove @Model.Name from the system</h2>
+
+<!-- Alert to show what is being deleted -->
+<div>
+    <hr />
+    <div class="alert alert-danger">
+        Are you sure you want to delete?
+    </div>
+    <dl class="container">
+        <div class="col-md-6 agile_tv_series_grid_right">
+            <p class="fexi_header"><span>Plant ID: </span>@Model.Plant_Id</p>
+            <p class="fexi_header"><span>Name: </span>@Model.Name</p>
+            <p class="fexi_header_para"><span>Family: </span> @Model.Family </p>
+            <p class="fexi_header_para"><span>Indoor or Outdoor: </span> @Model.IndoorOutdoor </p>
+            <p class="fexi_header_para"><span>Image: </span> @Model.Plant_Image</p>
+        </div>
+    </dl>
+</div>
+<!-- Delete form -->
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DeleteResult">
+            <hr />
+            <!-- Alert to ask for deletion input -->
+            <div class="alert alert-danger">
+                Retype the plants name and family to confirm.
+            </div>
+            <div>
+                <!-- delete confirmation inputs -->
+                <div class="form-group">
+                    <label asp-for="@Model.Name" class="control-label"></label>
+                    <input asp-for="@Model.Name" class="form-control" />
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Family" class="control-label"></label>
+                    <input asp-for="@Model.Family" class="form-control" />
+                    <span asp-validation-for="@Model.Family" class="text-danger"></span>
+                </div>
+                <hr />
+                <!-- Submit and cancel button -->
+                <div>
+                    <input asp-action="DeleteResult" type="submit" value="Delete" class="btn btn-primary" />
+                    <a asp-controller="plant" asp-action="Index" class="btn btn-primary">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

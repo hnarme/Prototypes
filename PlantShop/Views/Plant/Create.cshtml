@@ -1,0 +1,57 @@
+@model Plant;
+
+<!-- This view's title -->
+@{
+    ViewData["Title"] = "Add Plants";
+}
+
+<!-- This view's heading -->
+<h2>Add a plant to the system</h2>
+<hr />
+
+<!-- Adding a plant form -->
+<div class="row">
+    <div class="col-md-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="CreateResult">
+            <!-- Hides Id feild for the Plant_ID as it autoincrements -->
+            <input type="hidden" asp-for="Plant_Id" />
+            <!-- Name input -->
+            <div class="form-group">
+                <label asp-for="@Model.Name" class="control-label">Name:</label>
+                <input name="Name" asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <!-- Family input -->
+            <div class="form-group">
+                <label asp-for="@Model.Family" class="control-label">Family:</label>
+                <input name="Family" asp-for="@Model.Family" class="form-control" />
+                <span asp-validation-for="@Model.Family" class="text-danger"></span>
+            </div>
+            <!-- Indoor or Outdoor input -->
+            <div class="form-group">
+                <label asp-for="@Model.IndoorOutdoor" class="control-label">Indoor or Outdoor:</label>
+                <input name="IndoorOutdoor" asp-for="@Model.IndoorOutdoor" class="form-control" />
+                <span asp-validation-for="@Model.IndoorOutdoor" class="text-danger"></span>
+            </div>
+            <!-- image input -->
+            <div class="form-group">
+                <input name="PlantImage" asp-for="@Model.Plant_Image" class="custom-file-input" required />
+                <label asp-for="@Model.Plant_Image" class="custom-file-label">Choose image file...</label>
+                <span asp-validation-for="@Model.Plant_Image" class="text-danger"></span>
+            </div>
+            <hr />
+            <!-- Submit and cancel button -->
+            <div class="form-group">
+                <input type="submit" value="Add plant" class="btn btn-primary" />
+                <a asp-controller="plant" asp-action="Index" class="btn btn-primary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

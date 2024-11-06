@@ -1,0 +1,53 @@
+@model Staff;
+<!-- This view's title -->
+@{
+    ViewData["Title"] = "Edit Staff";
+}
+<!-- This view's heading -->
+<h2>@Model.Forename @Model.Surname's Details</h2>
+<hr />
+<!-- Editing staff details form -->
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditResult">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Staff_Id" />
+            <div class="form-group">
+                <label asp-for="@Model.Forename" class="control-label"></label>
+                <input asp-for="@Model.Forename" class="form-control" />
+                <span asp-validation-for="@Model.Forename" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Surname" class="control-label"></label>
+                <input asp-for="@Model.Surname" class="form-control" />
+                <span asp-validation-for="@Model.Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Email" class="control-label"></label>
+                <input asp-for="@Model.Email" class="form-control" />
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Password" class="control-label"></label>
+                <input asp-for="@Model.Password" class="form-control" />
+                <span asp-validation-for="@Model.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Role" class="control-label">Role:</label>
+                <input name="Role" asp-for="@Model.Role" class="form-control" />
+                <span asp-validation-for="@Model.Role" class="text-danger"></span>
+            </div>
+            <hr />
+            <div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-controller="Staff" asp-action="Index" class="btn btn-primary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

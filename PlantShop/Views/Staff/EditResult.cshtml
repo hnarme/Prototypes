@@ -1,0 +1,25 @@
+@model Staff;
+
+@{
+    ViewData["Title"] = "Changed Details";
+}
+
+<h2>Details changed successfully!</h2>
+
+<div>
+    <hr />
+    <dl class="container">
+        <div class="col-md-3 agile_grid_right">
+            <p class="fexi_header"><span>You have changed the staff details to:</span></p>
+            <p class="fexi_header"><span>Name: </span>@Model.Forename @Model.Surname</p>
+            <p class="fexi_header_para"><span>Email: </span> @Model.Email </p>
+            <p class="fexi_header_para"><span>Password: </span> @Model.Password </p>
+            <p class="fexi_header_para"><span>Role: </span> @Model.Role </p>
+        </div>
+    </dl>
+</div>
+
+<hr />
+<div>
+    <a asp-controller="Staff" asp-action="Index" class="btn btn-primary">Back</a>
+</div>

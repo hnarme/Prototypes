@@ -1,0 +1,54 @@
+@model Plant;
+<!-- This view's title -->
+@{
+    ViewData["Title"] = "Edit Plant";
+}
+
+<!-- This view's heading -->
+<h2>@Model.Name's Details</h2>
+<hr />
+<!-- Editing a plant form -->
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditResult">
+            <!-- Hides Id feild for the Plant_ID as it autoincrements -->
+            <input type="hidden" asp-for="@Model.Plant_Id" />
+            <!-- Name input -->
+            <div class="form-group">
+                <label asp-for="@Model.Name" class="control-label"></label>
+                <input asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+            <!-- Family input -->
+            <div class="form-group">
+                <label asp-for="@Model.Family" class="control-label"></label>
+                <input asp-for="@Model.Family" class="form-control" />
+                <span asp-validation-for="@Model.Family" class="text-danger"></span>
+            </div>
+            <!-- Indoor or Outdoor input -->
+            <div class="form-group">
+                <label asp-for="@Model.IndoorOutdoor" class="control-label">Indoor or Outdoor</label>
+                <input asp-for="@Model.IndoorOutdoor" class="form-control" />
+                <span asp-validation-for="@Model.IndoorOutdoor" class="text-danger"></span>
+            </div>
+            <!-- image input -->
+            <div class="form-group">
+                <input name="PlantImage" asp-for="@Model.Plant_Image" class="custom-file-input" required />
+                <label asp-for="@Model.Plant_Image" class="custom-file-label">Choose image file...</label>
+                <span asp-validation-for="@Model.Plant_Image" class="text-danger"></span>
+            </div>
+            <hr />
+            <!-- Submit and cancel button -->
+            <div>
+                <input asp-action="EditResult" type="submit" value="Save" class="btn btn-primary" />
+                <a asp-controller="Plant" asp-action="Index" class="btn btn-primary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

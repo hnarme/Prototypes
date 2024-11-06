@@ -1,0 +1,27 @@
+@model Plant;
+<!-- Title for this view -->
+@{
+    ViewData["Title"] = "Changed Details";
+}
+
+<!-- View heading -->
+<h2>Details changed successfully!</h2>
+
+<!-- Results from add form input -->
+<div>
+    <hr />
+    <dl class="container">
+        <div class="col-md-3 agile_grid_right">
+            <p class="fexi_header"><span>You have changed the details for the plant:</span></p>
+            <p class="fexi_header"><span>Name: </span>@Model.Name</p>
+            <p class="fexi_header_para"><span>Family: </span> @Model.Family </p>
+            <p class="fexi_header_para"><span>Indoor or Outdoor: </span> @Model.IndoorOutdoor </p>
+            <p class="fexi_header_para"><span>Image: </span> @Model.Plant_Image</p>
+        </div>
+    </dl>
+</div>
+<!-- Back button to index view -->
+<hr />
+<div>
+    <a asp-controller="Plant" asp-action="Index" class="btn btn-primary">Back</a>
+</div>

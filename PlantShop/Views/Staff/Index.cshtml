@@ -1,0 +1,74 @@
+﻿@model List<Staff>;
+<!-- Title for this view -->
+@{
+    ViewData["Title"] = "Staff List";
+}
+<h1>Staff List</h1>
+<hr />
+<!-- Add new staff button -->
+<div class="btn-group-top">
+    <a asp-controller="Staff" asp-action="Create" class="btn btn-primary float-end">
+        Register New Staff
+    </a>
+</div>
+<!-- Database list table -->
+<div class="page-container">
+    <div class="table-responsive">
+        <div class="scrollable">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Staff Id</th>
+                        <th>Forename</th>
+                        <th>Surname</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th style="width: 1px;">Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Staff staff in Model)
+                    {
+                        <tr>
+                            <td>
+                                @staff.Staff_Id
+                            </td>
+                            <td>
+                                @staff.Forename
+                            </td>
+                            <td>
+                                @staff.Surname
+                            </td>
+                            <td>
+                                @staff.Email
+                            </td>
+                            <td>
+                                @staff.Password
+                            </td>
+                            <td>
+                                @staff.Role
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown"
+                                        aria-expanded="false" id="btnToggleActions">
+                                        More Options
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="btnToggleActions">
+                                        <li><a asp-controller="Staff" asp-action="Display" asp-route-id="@staff.Staff_Id"
+                                                class="dropdown-item">Display</a></li>
+                                        <li><a asp-controller="Staff" asp-action="Edit" asp-route-id="@staff.Staff_Id"
+                                                class="dropdown-item">Edit</a></li>
+                                        <li><a asp-controller="Staff" asp-action="Delete" asp-route-id="@staff.Staff_Id"
+                                                class="dropdown-item">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

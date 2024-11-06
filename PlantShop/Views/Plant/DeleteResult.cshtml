@@ -1,0 +1,23 @@
+@model Plant;
+<!-- Title for this view -->
+@{
+    ViewData["Title"] = "Deleted Plant";
+}
+
+<!-- View heading -->
+<h2>Plant deleted successfully!</h2>
+
+<!-- Results from add form input -->
+<div>
+    <hr />
+    <dl class="container">
+        <div class="col-md-3 agile_grid_right">
+            <p class="fexi_header"><span>You have deleted plant from the system.</span></p>
+        </div>
+    </dl>
+</div>
+<!-- Back button to index view -->
+<hr />
+<div>
+    <a asp-controller="Plant" asp-action="Index" class="btn btn-primary">Back</a>
+</div>

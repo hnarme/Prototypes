@@ -1,0 +1,54 @@
+﻿@model Staff;
+
+<!-- This view's title -->
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<!-- Welcome heading -->
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<!-- Company Logo Img -->
+<div class="container">
+    <div class="row justify-content-center">
+        <img src="https://img.freepik.com/premium-vector/eco-friendly-green-plant-logo_658271-8323.jpg?semt=ais_hybrid"
+            alt="Logo" class="LogoImg">
+    </div>
+</div>
+
+<!-- Login form -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-5">
+            <div class="LoginForm">
+                <form asp-action="Index">
+                    <!-- Email input -->
+                    <div class="form-group">
+                        <label asp-for="@Model.Email" class="control-label">Email:</label>
+                        <input name="Email" asp-for="@Model.Email" class="form-control" required />
+                    </div>
+                    <!-- Password input -->
+                    <div class="form-group">
+                        <label asp-for="@Model.Password" class="control-label">Password:</label>
+                        <input type="password" name="Password" asp-for="@Model.Password" class="form-control"
+                            required />
+                    </div>
+                    <hr />
+                    <!-- Submit button -->
+                    <div class="row justify-content-center">
+                        <input type="submit" value="Sign in" class="btn btn-primary" id="loginbutton" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* @section Scripts {
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+} *@
