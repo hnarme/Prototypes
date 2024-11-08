@@ -1,6 +1,21 @@
 # Prototypes
 Program prototypes
 
+## PlantShop
+An MVC application using ASP.NET and locally stored database using MySQL. A warehouse type web system that facilitates staff roles and permissions, CRUD (create, read, update and delete) operations. Made during a 12 week bootcamp in 2024.
+### Features
+1.	Login Interface
+- Only registered staff can enter the website.
+- Specific interface will be seen once logged in depending on the staffs role.
+2.	Staff Interface
+-	View all plants in stock
+-	Change view by category e.g. indoor plants only, large plants only.
+-	Add new plants and amend plants data.
+-	Amend their own staff image.
+3.	Manager Interface
+-	Add new staff and amend their data.
+-	Manage staff roles and permissions.
+
 ## Balloon Game
 A passion project mobile game made using unity game engine. Balloons will appear from the bottom of the screen and pop automatically if a balloon reaches the top. The game will end automatically if a balloon reaches the top. The game has two modes:
 ### Endless Mode
@@ -20,17 +35,4 @@ An app made using Android studio and kotlin. It is a standard basic calculator a
 ## Colour Detection Game
 A colour detection game made using OpenCV library for a colour detection python script and unity for the game environment. To connect the python script to unity a UDP internet protocol was used. The colours blue, yellow and red were used to control the game. Created for my individual final year project at university. 
 
-## PlantShop
-An MVC application using ASP.NET and locally stored database using MySQL. A warehouse type web system that facilitates staff roles and permissions, CRUD (create, read, update and delete) operations.
-### Features
-1.	Login Interface
-- Only registered staff can enter the website.
-- Specific interface will be seen once logged in depending on the staffs role.
-2.	Staff Interface
--	View all plants in stock
--	Change view by category e.g. indoor plants only, large plants only.
--	Add new plants and amend plants data.
--	Amend their own staff image.
-3.	Manager Interface
--	Add new staff and amend their data.
--	Manage staff roles and permissions.
+
