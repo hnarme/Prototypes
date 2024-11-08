@@ -25,6 +25,7 @@ An MVC application using ASP.NET and locally stored database using MySQL. A ware
 ### Features
 1.	Login Interface
 - Only registered staff can enter the website.
+- Specific interface will be seen once logged in depending on the staffs role.
 2.	Staff Interface
 -	View all plants in stock
 -	Change view by category e.g. indoor plants only, large plants only.
